@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css'/>
+    <link rel="stylesheet" href="style.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>    
+</head>
+<body>
+
+
+    <div class="init-fade-cover"></div>
+
+    <div class="filler"></div>
+    <div class="hero-container hero-fixed">
+
+        <div class="hero-content-container">
+
+            <div class="video-2 video-container">
+                <video class='video2' src="./color-perlin.mp4" autoplay muted loop></video>
+            </div>
+            <div class="video-1 video-container">
+                <video class='video1' src="./bnw-perlin.mp4" autoplay muted loop></video>
+            </div>
+            
+
+            <div class="text-container--1">
+                <h1 class="hero-text--1"><span class="glitch" data-text="Toxic&nbsp;Data:">Toxic Data:</span> any data used without explicit consumer consent.</h1>
+                <p class="hero-sub-text--1">Are you unknowingly using toxic data for advertising?</p>
+            </div>
+            
+            <div class="text-container--2">
+                <h1 class="hero-text--2">Consumers expect choice and control over their data and digital ad experience.</h1>
+                <p class="hero-sub-text--2">It's time your advertising technology relies on safe data.</p>
+            </div>
+
+            <div class="hero-cta hero-cta-2"><a href="#">Book a demo to see how</a></div>
+            <div class="hero-cta hero-cta-1"><a href="#">Take a different approach</a></div>
+        </div>
+
+    </div>
+    <script>
+        // const video1 = $('.video1');
+        // const video2 = $('.video2');
+
+        // setTimeout(function(){
+        //     video1.play();
+        //     video2.play();
+        // }, 0);
+        $(window).ready(function(){
+            $(window).scroll(function (event) {
+                var scroll = $(window).scrollTop();
+
+                if (scroll > 500) {
+                    $(".hero-container").removeClass("hero-fixed");
+                    $(".hero-container").animate("top", "500px");
+
+                    $(".hero-cta").css("position", "absolute");
+
+                    // $(".filler").css("height", scroll);
+
+                    // $(".text-container--2").removeClass("fade-up-in");
+                    // $(".text-container--2").addClass("fade-up-out");
+                    // $(".hero-container").css("top", scroll);
+                    // $(".video2").css("opacity", "0");
+
+                } else if (scroll > 50) {
+                    
+                    $(".text-container--1").addClass("fade-up-out");
+
+                    $(".text-container--2").addClass("fade-up-in");
+
+                    $(".video2").css("opacity", "1");
+                    $(".video1").css("opacity", "0");
+
+                    $(".hero-cta-1").fadeOut(500);
+
+                    
+
+                } else if (scroll < 50) {
+
+                    $(".hero-cta-1").fadeIn(500);
+                    
+                    $(".video1").css("opacity", "1");
+                    $(".text-container--1").removeClass("fade-up-out");
+
+                    $(".text-container--2").removeClass("fade-up-in");
+                    $(".text-container--2").removeClass("fade-up-out");  
+
+                    $(".hero-container").addClass("hero-fixed");
+                    $(".hero-container").css("top", "0");
+
+                }
+            });
+        });
+    </script>
+</body>
+</html>
